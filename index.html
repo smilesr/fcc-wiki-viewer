@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <title>Wiki Searcher</title>
+    <style>
+      body {
+        background-color:  #000099;
+      }
+      .container {
+        display: flex;
+        height: 100vh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 1px red solid;
+        color: white;
+      }
+      .inside {
+        margin: 0;
+        border: 1px blue solid;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="inside"><a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">Click here for a random article </a> </div>
+      <div class="inside" id="search">
+        <form id="search_term">
+           <input type="search" name="search" id="search_value"/>
+        </form> 
+      </div>
+      <div class="inside">Click icon to search</div>
+    </div>
+
+
+    <script>
+  $("document").ready(function() {
+    $('#search_term').keypress(function (e) {
+        if (e.which == 13)
+         {
+          console.log("inside");
+          e.preventDefault();
+          var input = $("#search_value").val();
+          $.ajax({
+            type: "GET",
+            data: input,
+            url: "http://en.wikipedia.org/w/api.php?action=opensearch&search=" + input + "&callback=?",
+            contentType: "application/json; charset=utf-8",
+            async: false,
+            dataType: "json",
+            success: function (data, textStatus, jqXHR) {
+            console.log(data);
+            // showResults(data);
+        },
+        error: function (errorMessage) {
+        }
+    });
+
+        
+         }
+      });
+
+      // function showResults(data){
+        
+      }
+    });
+
+        // $('#search').on("keyup", function(){ 
+//           var input = "lebron";
+//           $.ajax({
+//             type: "GET",
+//             data: input,
+//             url: "http://en.wikipedia.org/w/api.php?action=opensearch&search=" + input + "&callback=?",
+//             contentType: "application/json; charset=utf-8",
+//             async: false,
+//             dataType: "json",
+//             success: function (data, textStatus, jqXHR) {
+//             console.log(data);
+//         },
+//         error: function (errorMessage) {
+//         }
+//     });
+
+//   });
+// });
+
+     </script>
+  </body>
+</html>
