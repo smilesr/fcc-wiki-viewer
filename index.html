@@ -39,6 +39,9 @@
       }
       a {
         text-decoration: none;
+        color: black;
+      }
+      .inside > a {
         color: white;
       }
       .search_value {
@@ -46,119 +49,103 @@
         border-color: orange;
         background-color: inherit;
       }
-      .search-icon {
-        text-align: center;
-      }
-/*      i {
-        color: orange;
-
-      }*/
-
       .expSearchBox {
-    float: right;
-    margin: 28px 0;
-}
-.expSearchFrom {
-    border: 3px solid orange;
-    border-radius: 20px;
-    display: inline-block;
-    height: 34px;
-    position: relative;
-}
-input#field{
-  cursor:pointer;
-    border:none;
-    background:transparent;
-    height:30px;
-    width:0px;
-    line-height:0px;
-    vertical-align:top;
-    padding:0px 15px;
-    -webkit-transition: width .5s; /* Safari */
-    transition: width .5s; 
-    position:relative;
-    z-index:2;
-   color:#fff;
-    }
-input#field:focus{
-    width:200px;
-    outline:none;
-    margin-right:30px;
-}
-.close{
-    position:absolute;
-    width:30px;
-    height:30px;
-    top:0px;
-    right:0px;
-    -webkit-transition: .2s ease-in-out;
-    -moz-transition: .2s ease-in-out;
-    -o-transition: .2s ease-in-out;
-    transition: .2s ease-in-out;
-    cursor: pointer;   
-    z-index:1
-}
+        float: right;
+        margin: 28px 0;
+      }
+      .expSearchFrom {
+        border: 3px solid orange;
+        border-radius: 2.5rem;
+        display: inline-block;
+        height: 3rem;
+        position: relative;
+      }
+      input#field{
+        cursor:pointer;
+        border:none;
+        background:transparent;
+        height:30px;
+        width:0px;
+        line-height:0px;
+        vertical-align:top;
+        padding:0px 15px;
+        -webkit-transition: width .5s; /* Safari */
+        transition: width .5s; 
+        position:relative;
+        z-index:2;
+       color:#fff;
+      }
+      input#field:focus{
+        width:200px;
+        outline:none;
+        margin-right:30px;
+      }
+      .close{
+        position:absolute;
+        width:30px;
+        height:30px;
+        top:0px;
+        right:0px;
+        -webkit-transition: .2s ease-in-out;
+        -moz-transition: .2s ease-in-out;
+        -o-transition: .2s ease-in-out;
+        transition: .2s ease-in-out;
+        cursor: pointer;   
+        z-index:1
+      }
 
-.close span {
-    background: orange none repeat scroll 0 0;
-    border-radius: 3px;
-    display: block;
-    height: 4px;
-    position: absolute;
-    right: -7px;
-    top: 29px;
-    width: 14px;
-  
-   -webkit-transition: .2s .5s ease-in-out ;
-    -moz-transition: .2s .5s ease-in-out;
-    -o-transition: .2s .5s ease-in-out;
-    transition: .2s .5s ease-in-out;    
-   -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);    
-}
+      .close span {
+        background: orange none repeat scroll 0 0;
+        border-radius: 3px;
+        display: block;
+        height: 4px;
+        position: absolute;
+        right: -7px;
+        top: 29px;
+        width: 14px;
+
+       -webkit-transition: .2s .5s ease-in-out ;
+        -moz-transition: .2s .5s ease-in-out;
+        -o-transition: .2s .5s ease-in-out;
+        transition: .2s .5s ease-in-out;    
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);    
+      }
    
 
-.close span.back{
-    top:12px;
-    right:5px;
-    opacity:0;
-}
-input#field:focus + .close span{
-    top:12px;
-    right:5px;
-}
+      .close span.back{
+        top:12px;
+        right:5px;
+        opacity:0;
+      }
+      input#field:focus + .close span{
+        top:12px;
+        right:5px;
+      }
 
-input#field:focus + .close span.back{
-    -webkit-transition: .5s .7s ease-in-out ;
-    -moz-transition: .5s .7s ease-in-out;
-    -o-transition: .5s .7s ease-in-out;
-    transition: .5s .7s ease-in-out;    
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-    opacity:1;
-}
-
+      input#field:focus + .close span.back{
+        -webkit-transition: .5s .7s ease-in-out ;
+        -moz-transition: .5s .7s ease-in-out;
+        -o-transition: .5s .7s ease-in-out;
+        transition: .5s .7s ease-in-out;    
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        opacity:1;
+      }
     </style>
   </head>
   <body>
     <div class="container">
       <div class="inside"><a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">Click here for a random article </a> </div>
-<!--       <div class="inside search-icon">
-        <i class="fa fa-search fa-2x" aria-hidden="true"></i>
-        <form class="search_term">
-           <input type="search" name="term" class="search_value"/>
-        </form> 
-      </div> -->
 
     <div class="inside search-icon expSearchBox">
       <div class="expSearchFrom">
         <input id="field" type="text" class="search_value"/> 
         <div class="close">
-     <!--  <i class="fa fa-search fa-2x" aria-hidden="true"></i> -->
           <span class="front"></span>
           <span class="back"></span>
         </div>
@@ -167,9 +154,6 @@ input#field:focus + .close span.back{
 
       <div class="inside click-icon">Click icon to search</div>
       <div id="results"></div>
-   <!--  </div> -->
-
-
     <script>
   $("document").ready(function() {
     $('.search_value').keypress(function (e) {
@@ -188,50 +172,24 @@ input#field:focus + .close span.back{
             success: function (data, textStatus, jqXHR) {
             console.log(data);
             showResults(data);
-        },
+          },
         error: function (errorMessage) {
         }
     });
+   }
+ });
+  function showResults(data){
+    $('body').addClass('changed');
+    $('.click-icon').remove();
+    var items = data[1].length;
+    var content = "";
 
-        
-         }
-      });
-
-      function showResults(data){
-        $('body').addClass('changed');
-        $('.click-icon').remove();
-        var items = data[1].length;
-        var content = "";
-
-        for (var i=0; i<items; i++){
-          content = "<div style='background-color:#e6e6e7;width:90%;color:black; margin: 1rem auto 1rem auto; padding: 1rem;'>" + "<h2>" + data[1][i] + "</h2>" + "<p>" + data[2][i] + "</p>" + "</div>";
-          $('#results').append(content);
-        }
-      };
-       
-
-     
-    });
-
-        // $('#search').on("keyup", function(){ 
-//           var input = "lebron";
-//           $.ajax({
-//             type: "GET",
-//             data: input,
-//             url: "http://en.wikipedia.org/w/api.php?action=opensearch&search=" + input + "&callback=?",
-//             contentType: "application/json; charset=utf-8",
-//             async: false,
-//             dataType: "json",
-//             success: function (data, textStatus, jqXHR) {
-//             console.log(data);
-//         },
-//         error: function (errorMessage) {
-//         }
-//     });
-
-//   });
-// });
-
+    for (var i=0; i<items; i++){
+      content = "<div class='result-tiles' style='background-color:#e6e6e7;width:85%;color:black; margin: 1rem auto 1rem auto; padding: 1rem; font-size: 1rem;'>" + "<h2>" + "<a href=" + data[3][i] + ">" + data[1][i] +"</a>" + "</h2>" + "<p>" + data[2][i] + "</p>" + "</div>";
+      $('#results').append(content);
+    }
+  };     
+});
      </script>
   </body>
 </html>
