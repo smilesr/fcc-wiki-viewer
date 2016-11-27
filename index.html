@@ -7,50 +7,76 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css'>
     <title>Wiki Searcher</title>
     <style>
+      html {
+        font-size: 62.5%; 
+      }
       body {
-        background-color:  #000099;
+        background-color:#092b40;
       }
       .container {
         display: flex;
-        height: 100vh;
+        min-height: 100vh;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        border: 1px red solid;
+        color: white;
+      }
+      body#changed .container {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
         color: white;
       }
       .inside {
         margin: 0;
-        border: 1px blue solid;
+
       }
       a {
         text-decoration: none;
         color: white;
       }
+      .search_value {
+        border-radius: 2rem;
+        border-color: orange;
+        background-color: inherit;
+      }
+      .search-icon {
+        text-align: center;
+      }
+      i {
+        color: orange;
+
+      }
+
     </style>
   </head>
   <body>
     <div class="container">
       <div class="inside"><a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">Click here for a random article </a> </div>
-      <div class="inside" id="search">
-        <form id="search_term">
-           <input type="search" name="search" id="search_value"/>
+      <div class="inside search-icon">
+        <i class="fa fa-search fa-2x" aria-hidden="true"></i>
+        <form class="search_term">
+           <input type="search" name="term" class="search_value"/>
         </form> 
       </div>
-      <div class="inside">Click icon to search</div>
+      <div class="inside click-icon">Click icon to search</div>
+      <div id="results"></div>
     </div>
 
 
     <script>
   $("document").ready(function() {
-    $('#search_term').keypress(function (e) {
+    $('.search_term').keypress(function (e) {
         if (e.which == 13)
          {
           console.log("inside");
           e.preventDefault();
-          var input = $("#search_value").val();
+          var input = $(".search_value").val();
           $.ajax({
             type: "GET",
             data: input,
@@ -60,7 +86,7 @@
             dataType: "json",
             success: function (data, textStatus, jqXHR) {
             console.log(data);
-            // showResults(data);
+            showResults(data);
         },
         error: function (errorMessage) {
         }
@@ -70,9 +96,20 @@
          }
       });
 
-      // function showResults(data){
-        
-      }
+      function showResults(data){
+        $('body').addClass('changed');
+        $('.click-icon').remove();
+        var items = data[1].length;
+        var content = "";
+
+        for (var i=0; i<items; i++){
+          content = "<div style='background-color:#e6e6e7;width:90%;color:black; margin: 1rem auto 1rem auto; padding: 1rem;'>" + "<h2>" + data[1][i] + "</h2>" + "<p>" + data[2][i] + "</p>" + "</div>";
+          $('#results').append(content);
+        }
+      };
+       
+
+     
     });
 
         // $('#search').on("keyup", function(){ 
