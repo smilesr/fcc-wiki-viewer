@@ -53,6 +53,7 @@
         float: right;
         margin: 28px 0;
       }
+      /* the icon & expanded search bar */
       .expSearchFrom {
         border: 3px solid orange;
         border-radius: 2.5rem;
@@ -60,6 +61,7 @@
         height: 3rem;
         position: relative;
       }
+      /*the expanded search bar; if zindex is less than close's zindex than search bar doesn't stay */
       input#field{
         cursor:pointer;
         border:none;
@@ -80,9 +82,10 @@
         outline:none;
         margin-right:30px;
       }
+      /* relates to handle of icon as well */
       .close{
         position:absolute;
-        width:30px;
+        width:130px;
         height:30px;
         top:0px;
         right:0px;
@@ -93,7 +96,7 @@
         cursor: pointer;   
         z-index:1
       }
-
+      /* the handle on the icon */
       .close span {
         background: orange none repeat scroll 0 0;
         border-radius: 3px;
@@ -114,12 +117,13 @@
         transform: rotate(45deg);    
       }
    
-
+      /* the 'x' (or at least that portion of the x that is backslash positioned) that appears in the expanded search box is invisible (opacity is 0) but exists behind the icon */
       .close span.back{
         top:12px;
         right:5px;
         opacity:0;
       }
+      /* location of x on expanded bar  */
       input#field:focus + .close span{
         top:12px;
         right:5px;
@@ -175,20 +179,30 @@
           },
         error: function (errorMessage) {
         }
+      });
+      }
+
+    $('input#field').on('click',function(){
+      // $('input#field + .class').on('click',function(){
+      console.log('clicked');
+      $('#results').empty();
+      $('input#field').val("");
+      $('input#field').blur();
+      $('.click-icon').text('Click icon to search');
     });
-   }
- });
+  });
   function showResults(data){
     $('body').addClass('changed');
-    $('.click-icon').remove();
+    $('.click-icon').empty();
     var items = data[1].length;
     var content = "";
 
     for (var i=0; i<items; i++){
-      content = "<div class='result-tiles' style='background-color:#e6e6e7;width:85%;color:black; margin: 1rem auto 1rem auto; padding: 1rem; font-size: 1rem;'>" + "<h2>" + "<a href=" + data[3][i] + ">" + data[1][i] +"</a>" + "</h2>" + "<p>" + data[2][i] + "</p>" + "</div>";
+      content = "<div class='result-tiles' style='background-color:#e6e6e7;width:85%;color:black; margin: 1rem auto 1rem auto; padding: 1rem; font-size: 1rem;'>" + "<h2>" + "<a href=" + data[3][i] + " " + "target='_blank'" + ">" + data[1][i] +"</a>" + "</h2>" + "<p>" + data[2][i] + "</p>" + "</div>";
       $('#results').append(content);
     }
-  };     
+  };
+
 });
      </script>
   </body>
